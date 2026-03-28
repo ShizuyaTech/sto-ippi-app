@@ -6,11 +6,12 @@ use App\Http\Controllers\Admin\StockTakingSessionController;
 use App\Http\Controllers\Admin\TagNumberController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\StockTakingController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    if (auth()->check()) {
-        if (auth()->user()->isAdmin()) {
+    if (Auth::check()) {
+        if (Auth::user()->isAdmin()) {
             return redirect()->route('admin.dashboard');
         }
 
